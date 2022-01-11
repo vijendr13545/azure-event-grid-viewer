@@ -1,11 +1,11 @@
 ﻿@{
-    ViewData["Title"] = "Distibutor 1 App";
+    ViewData["Title"] = "Distibutor 2 App";
 }
 
 <div>
     <p style="float: left; font-size: 24px;" class="lead">
         @*<img src="~/images/eventgrid.png" height="47" width="90" alt="Azure Event Grid" />*@
-        <strong>Distibutor 1 App</strong>
+        <strong>Distibutor 2 App (works after retries)</strong>
     </p>
     <p style="float: right;">
         <button class="btn btn-primary btn-xs" id="clear-events">
@@ -83,12 +83,12 @@
             });
 
             hubConnection = new signalR.HubConnectionBuilder()
-                .withUrl("hubs/gridevents")
+                .withUrl("../hubs/gridevents")
                 .configureLogging(signalR.LogLevel.Information)
                 .build();
 
             hubConnection.start().catch(err => console.error(err.toString()));
-            hubConnection.on('gridupdate', function (id, eventType, subject, eventTime, data) {
+            hubConnection.on('gridupdate2', function (id, eventType, subject, eventTime, data) {
                 addEvent(id, eventType, subject, eventTime, data);
             });
         };
